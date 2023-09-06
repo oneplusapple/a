@@ -1,0 +1,25 @@
+6) a) Write the Python code and Execute the program to find divergence of F⃗ = xyz î+ 3x^2yz ĵ+ (xz^2 − y^2z) k̂
+from sympy.vector import*
+from sympy import symbols
+N=CoordSys3D('')
+x,y,z=symbols('x y z')
+A=N.x*N.y*N.z*N.i+3*N.x**2*N.y*N.j+(N.x*N.z**2-N.y**2*N.z)*N.k
+print("The given scalar point function is:")
+display(A)
+D=Del()
+P=D.dot(A)
+display(P)
+divA=divergence(A)
+print("Divergence of F is:")
+display(divA)
+
+b) Using Green’s theorem, Evaluate ∮ [(3x + 4y) dx + (2x − 3y)dy]c where C is the boundary of the circle x^2 + y^2 = 4
+from sympy import *
+var('x,y')
+p=3*x+4*y
+q=2*x-3*y
+f=diff(q,x)-diff(p,y)
+soln=integrate(f,[y,-sqrt(4-x**2),sqrt(4-x**2)],[x,-2,2])
+print("I=",soln)
+Output:-
+I= -8*pi
